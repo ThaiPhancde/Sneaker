@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -145,6 +146,17 @@ namespace Sneaker.Controllers
                 data.ChiTietDatHangs.InsertOnSubmit(ctdh);
             }
             data.SubmitChanges();
+            // Tạo nội dung email từ mẫu
+            string content = System.IO.File.ReadAllText(Server.MapPath("~/Assets/Customer/template/neworder.html"));
+
+            // Thay thế các placeholder trong mẫu email bằng thông tin thực tế
+            content = content.Replace("{{CustomerName}}", kh.HoTen);
+            content = content.Replace("{{Phone}}", kh.DienThoaiKH);
+            content = content.Replace("{{Email}}", kh.Email);
+            content = content.Replace("{{Address}}", kh.DiaChiKH);
+            content = content.Replace("{{Total}}", TotalAmount().ToString()); // Thay Total bằng thông tin tổng số tiền
+            var toEmail = ConfigurationManager.AppSettings["ToEmailAddress"].ToString();
+            new MailHelper().SendMail(toEmail,"Đơn hàng mới từ Sneaker", content);
             Session["Cart"] = null;
             return RedirectToAction("OrderSuccess", "Cart");
 

@@ -136,6 +136,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\CartController.cs" />
+    <Compile Include="Controllers\MailHelper.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MemberController.cs" />
     <Compile Include="Controllers\ShopController.cs" />
@@ -180,6 +181,7 @@
     <Content Include="Assets\Customer\fonts\ionicons\css\ionicons.min.css" />
     <Content Include="Assets\Customer\fonts\ionicons\fonts\ionicons.svg" />
     <Content Include="Assets\Customer\fonts\open-iconic\open-iconic.svg" />
+    <Content Include="Assets\Customer\template\neworder.html" />
     <Content Include="Assets\Customer\js\aos.js" />
     <Content Include="Assets\Customer\js\bootstrap-datepicker.js" />
     <Content Include="Assets\Customer\js\bootstrap.min.js" />
